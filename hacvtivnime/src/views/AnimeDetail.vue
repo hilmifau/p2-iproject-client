@@ -15,6 +15,7 @@
             <div class="card h-100">
               <!-- Product image-->
               <img
+                v-if="anime.images"
                 class="card-img-top"
                 style="object-fit: cover; height: 500px"
                 :src="anime.images.jpg.large_image_url"
@@ -39,7 +40,7 @@
                     >, Popularity:
                     <strong style="color: red">{{ anime.popularity }}</strong>
                   </p>
-                  <h4 class="m-0">Studios: {{ anime.studios[0].name }}</h4>
+                  <h4 v-if="anime.studios" class="m-0">Studios: {{ anime.studios[0].name }}</h4>
                 </div>
               </div>
               <!-- Product actions-->
@@ -80,7 +81,6 @@ export default {
     return {
       baseUrl: window.location.origin,
       identifier: this.$route.path,
-      title: this.$page.title,
       category_id: "anime",
     };
   },
